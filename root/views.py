@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from .models import Services
-from courses.models import Courses , Trainer
+from courses.models import Courses , Trainer , Category
 
 def home(request):
+    category = Category.objects.all()
     service = Services.objects.filter(status=True)
     last_three_courses = Courses.objects.filter(status=True)[:3]
     last_three_Trainer = Trainer.objects.filter(status=True)[:3]
@@ -10,16 +11,29 @@ def home(request):
         'service': service,
         'courses' : last_three_courses,
         'trainer': last_three_Trainer,
+        'category' : category
    }
     return render (request , "root/index.html", context= context)
 
 def about(request):
-    return render (request , "root/about.html")
+    category = Category.objects.all()
+    context = {
+        'category' : category
+   }
+    return render (request , "root/about.html", context= context)
 
 def contact(request):
-    return render (request , "root/contact.html")
+    context = {
+        'category' : category
+   }
+    category = Category.objects.all()
+    return render (request , "root/contact.html", context= context)
 
 def trainer(request):
-    return render (request , "root/trainers.html")
+    context = {
+        'category' : category
+   }
+    category = Category.objects.all()
+    return render (request , "root/trainers.html", context= context)
 
 
