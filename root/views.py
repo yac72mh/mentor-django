@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Services
 from courses.models import Courses , Trainer , Category
+from django.contrib.auth.models import User
 
 def home(request):
     category = Category.objects.all()
