@@ -3,9 +3,9 @@ from .models import Services
 
 def home(request):
     services = Services.objects.all()
-    context = [
-        'services': Services
-    ]
+    context = {
+        'services': Services,
+   }
     return render (request , "root/index.html", context= context)
 
 def about(request):
