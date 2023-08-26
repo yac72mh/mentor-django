@@ -15,9 +15,16 @@ class Skills(models.Model):
 class Trainer(models.Model):
     info = models.ForeignKey(User , on_delete=models.CASCADE)
     skills = models.ForeignKey(Skills, on_delete=models.CASCADE)
-    
-
-
+    description = models.TextField()
+    image = models.ImageField(upload_to='trainer', default='teacher.jpg') 
+    twiter = models.CharField(max_length=255, default='#')
+    instagram = models.CharField(max_length=255, default='#')
+    facebook = models.CharField(max_length=255, default='#')
+    linkdine = models.CharField(max_length=255, default='#')
+    statuse = models.BooleanField(default=False)
+    updated_date = models.DateTimeField(auto_now=True)
+    def __str__(self):
+        return self.info.username
 
 class Courses(models.Model):
     image = models.ImageField(upload_to='courses', default='default.jpg')
@@ -33,7 +40,9 @@ class Courses(models.Model):
     status = models.BooleanField(default=False)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
-
-
+    
+    
+    class Meta:
+        ordering = ('-created_date',)
     def __str__(self):
         return self.title
