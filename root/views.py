@@ -2,9 +2,9 @@ from django.shortcuts import render
 from .models import Services
 
 def home(request):
-    services = Services.objects.filter(status=True)
+    service = Services.objects.filter(status=True)
     context = {
-        'services': Services,
+        'service': service,
    }
     return render (request , "root/index.html", context= context)
 
