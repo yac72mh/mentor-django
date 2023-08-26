@@ -20,7 +20,7 @@ class Trainer(models.Model):
     twiter = models.CharField(max_length=255, default='#')
     instagram = models.CharField(max_length=255, default='#')
     facebook = models.CharField(max_length=255, default='#')
-    linkdine = models.CharField(max_length=255, default='#')
+    linkdin = models.CharField(max_length=255, default='#')
     statuse = models.BooleanField(default=False)
     updated_date = models.DateTimeField(auto_now=True)
     def __str__(self):

@@ -19,4 +19,7 @@ def about(request):
 def contact(request):
     return render (request , "root/contact.html")
 
+def trainer(request):
+    return render (request , "root/trainers.html")
+
 
