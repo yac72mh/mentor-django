@@ -27,29 +27,32 @@
           {% for courses in courses %}
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="course-item">
-              <img src="{% static 'assets/img/course-1.jpg' %}" class="img-fluid" alt="...">
+              <img src={{courses.image.url}} class="img-fluid" alt="...">
               <div class="course-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>{Web Development}</h4>
-                  <p class="price">{{% courses.price %}}</p>
+                  {% for category in courses.category.all %}
+                  <h4>{{category.name}}</h4>
+                  {% endfor %}
+                  <p class="price">{{courses.price}}</p>
                 </div>
 
-                <h3><a href="course-details.html">{{% courses.title %}}</a></h3>
-                <p>{{% courses.content %}}</p>
+                <h3><a href="course-details.html">{{courses.title}}</a></h3>
+                <p>{{courses.content}}</p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
-                    <img src="{% static 'assets/img/trainers/trainer-1.jpg' %}" class="img-fluid" alt="">
-                    <span>Antonio</span>
+                    <img src={{courses.teacher.image.url}} class="img-fluid" alt="">
+                    <span>{{courses.teacher.info.username}}</span>
                   </div>
                   <div class="trainer-rank d-flex align-items-center">
-                    <i class="bx bx-user"></i>&nbsp;50
+                    <i class="bx bx-user"></i>&nbsp;{{courses.counted_views}}
                     &nbsp;&nbsp;
-                    <i class="bx bx-heart"></i>&nbsp;65
+                    <i class="bx bx-heart"></i>&nbsp;{{courses.counted_like}}
                   </div>
                 </div>
               </div>
             </div>
           </div> <!-- End Course Item-->
+          {% endfor %}
 
 
         </div>

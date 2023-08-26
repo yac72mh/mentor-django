@@ -32,7 +32,7 @@ class Courses(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField()
     price = models.IntegerField(default=0)
-    teacher = models.CharField(max_length=50)
+    teacher = models.ForeignKey(Trainer , on_delete=models.CASCADE)
     counted_views = models.IntegerField(default=0)
     counted_like = models.IntegerField(default=0)
     available_seat = models.IntegerField(default=0)

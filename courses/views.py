@@ -3,7 +3,7 @@ from .models import Courses
 
 
 def courses(request):
-    courses = Courses.objects.all()
+    courses = Courses.objects.filter(status=True)
     context = {
         'courses': courses,
         }
