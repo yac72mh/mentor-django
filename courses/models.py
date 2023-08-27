@@ -46,3 +46,9 @@ class Courses(models.Model):
         ordering = ('-created_date',)
     def __str__(self):
         return self.title
+    
+    def snip(self):
+        return self.content[:20] + "..."
+    
+    def capt(self):
+        return self.title.capitalize()
