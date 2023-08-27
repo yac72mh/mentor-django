@@ -15,6 +15,9 @@ def courses(request , cat=None , teacher=None):
     
     
     courses = Paginator(courses, 2)
+    first_page = 1
+    last_page = courses . num_pages
+
     try:
         page_number = request.Get.get('page')
         courses = courses.get_pages(page_number)
@@ -23,8 +26,11 @@ def courses(request , cat=None , teacher=None):
     except PageNotAnInteger:
         courses = courses.get_pages(1)
 
+
     context = {
         'courses': courses,
+        'first_page' : first_page,
+        'last_page': last_page,
         }                     
     return render (request , 'courses/courses.html', context=context)
 

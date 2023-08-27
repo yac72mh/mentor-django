@@ -62,22 +62,22 @@
     </section><!-- End Courses Section -->
     <div align="center" style="font-size:35px;">
       {% if courses.has_next and courses.has_previous %}
-      <a href="#"><<</a>
+      <a href="?page ={{first_page}}"><<</a>
       <a href="#">....</a>
-      <a href="#"><  </a>
+      <a href='?page={{courses.previous_page_number}}'><  </a>
       <a href="#">....</a>
-      <a href="#">></a>
+      <a href='?page={{courses.next_page_number}}'>></a>
       <a href="#">....</a>
-      <a href="#">>></a>
+      <a href="?page ={{last_page}}">>></a>
       {% elife courses.has_next %}
       <a href="#">....</a>
-      <a href="#">></a>
+      <a href='?page={{courses.next_page_number}}'>></a>
       <a href="#">....</a>
-      <a href="#">>></a>
+      <a href="?page ={{last_page}}">>></a>
       {% elif courses.has_previous %}
-      <a href="#"><<</a>
+      <a href="?page ={{first_page}}"><<</a>
       <a href="#">....</a>
-      <a href="#"><  </a>
+      <a href='?page={{courses.previous_page_number}}'><  </a>
       {% endif %}
     </div>
 
