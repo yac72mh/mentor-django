@@ -16,7 +16,7 @@ def courses(request , cat=None , teacher=None):
     
     courses = Paginator(courses, 2)
     first_page = 1
-    last_page = courses . num_pages
+    last_page = courses.num_pages
 
     try:
         page_number = request.Get.get('page')
@@ -34,4 +34,12 @@ def courses(request , cat=None , teacher=None):
         }                     
     return render (request , 'courses/courses.html', context=context)
 
-# Create your views here.
+    def courses_details(request, id):
+        courses = Courses.objects.get(id=id)
+    context = {
+        'courses': courses,
+        }                     
+    return render (request , 'courses/courses-details.html', context=context)
+
+
+
