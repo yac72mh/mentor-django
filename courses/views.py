@@ -2,8 +2,11 @@ from django.shortcuts import render
 from .models import Courses
 
 
-def courses(request):
-    courses = Courses.objects.filter(status=True)
+def courses(request , cat=None):
+    if cat:
+        courses = Courses.objects.filter(category__name=cat)
+    else:
+        courses = Courses.objects.filter(status=True)
     context = {
         'courses': courses,
         }
