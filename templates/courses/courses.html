@@ -13,7 +13,7 @@
       </div>
     </div><!-- End Breadcrumbs --><br>
     <div class="single-sidebar-widget search-widget" align="center">
-      <form class="search-form" action="#">
+      <form class="search-form" action={% url 'courses:course_search' % }>
           <input placeholder="Search Posts" name="search" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'">
           <button type="submit">click</button>
       </form>
@@ -61,6 +61,7 @@
       </div>
     </section><!-- End Courses Section -->
     <div align="center" style="font-size:35px;">
+      {% if courses.has_next and courses.has_previous %}
       <a href="#"><<</a>
       <a href="#">....</a>
       <a href="#"><  </a>
@@ -68,6 +69,16 @@
       <a href="#">></a>
       <a href="#">....</a>
       <a href="#">>></a>
+      {% elife courses.has_next %}
+      <a href="#">....</a>
+      <a href="#">></a>
+      <a href="#">....</a>
+      <a href="#">>></a>
+      {% elif courses.has_previous %}
+      <a href="#"><<</a>
+      <a href="#">....</a>
+      <a href="#"><  </a>
+      {% endif %}
     </div>
 
   </main><!-- End #main -->
