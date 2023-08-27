@@ -34,8 +34,8 @@ def courses(request , cat=None , teacher=None):
         }                     
     return render (request , 'courses/courses.html', context=context)
 
-    def courses_details(request, id):
-        courses = Courses.objects.get(id=id)
+def courses_details(request, id):
+    courses = Courses.objects.get(id=id)
     context = {
         'courses': courses,
         }                     
