@@ -55,6 +55,8 @@ def courses_details(request, id):
         courses . save()
         context = {
             'courses': courses,
+            'next_course' : next_course,
+            'previouse_course' : previouse_course,
         }                     
         return render (request , 'courses/courses-details.html', context=context)
     except:
