@@ -35,11 +35,29 @@ def courses(request , cat=None , teacher=None):
     return render (request , 'courses/courses.html', context=context)
 
 def courses_details(request, id):
-    courses = get_object_or_404(Courses, id=id)
-    context = {
-        'courses': courses,
-        }                     
-    return render (request , 'courses/courses-details.html', context=context)
+    try:
+        courses = Courses.objects.get(id=id)
+        id_list = []
+        course = Courses.objects.filter(status=True)
+        for cr in course:
+            id_list.append(cr.id)
+        if id_list[0] == id:
+            next_course = Courses.objects.get(id=id_list[1])
+            previouse_course = None
+        elif id_list[-1]== id :
+            next_course = None
+            previouse_course = Courses.objects.get(id=id_list[-2])        
+        else:
+           next_course = Courses.object.get(id=id_list[id_list.index(id)+1])
+           previouse_course = Courses.object.get(id=id_list[id_list.index(id)-1])
 
+        courses.counted_views +=1
+        courses . save()
+        context = {
+            'courses': courses,
+        }                     
+        return render (request , 'courses/courses-details.html', context=context)
+    except:
+        return render (request , 'courses/404.html')
 
 
