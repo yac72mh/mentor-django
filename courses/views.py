@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render , get_object_or_404
 from .models import Courses
 from django.core.paginator import Paginator , PageNotAnInteger , EmptyPage
 
@@ -35,7 +35,7 @@ def courses(request , cat=None , teacher=None):
     return render (request , 'courses/courses.html', context=context)
 
 def courses_details(request, id):
-    courses = Courses.objects.get(id=id)
+    courses = get_object_or_404(Courses, id=id)
     context = {
         'courses': courses,
         }                     
